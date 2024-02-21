@@ -1,5 +1,3 @@
-# Potential Adversary in the middle Phishing
-
 ## Creation of Shadow Copies
 
 #### Description
