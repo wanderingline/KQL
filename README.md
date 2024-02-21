@@ -21,24 +21,4 @@ Adversary in the middle phishing has successfully been peformed on a user and th
 - https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/aitm-amp-bec-threat-hunting-with-kql/ba-p/3885166
 - https://jeffreyappel.nl/aitm-mfa-phishing-attacks-in-combination-with-new-microsoft-protections-2023-edt/
 
-## Defender For Endpoint
-```KQL
-AADSignInEventsBeta
-| where Application == "OfficeHome"
-| where AccountUpn has "@"
-| where isempty(AadDeviceId)
-| summarize RiskLevels = make_set(RiskLevelDuringSignIn), ResultTypes = make_set(ErrorCode), IPs = make_set(IPAddress) by CorrelationId, AccountUpn
-// Optional to only filter on events with a RiskLevel during the sign-in
-//| where RiskLevels has_any (10, 50, 100)
-```
-## Sentinel
-```KQL
-SigninLogs
-| where AppDisplayName == "OfficeHome"
-| where UserPrincipalName has "@"
-| extend deviceId = tostring(DeviceDetail.deviceId), displayName = tostring(DeviceDetail.displayName)
-| where isempty(deviceId)
-| summarize RiskLevels = make_set(RiskLevelDuringSignIn), ResultTypes = make_set(ResultType), IPs = make_set(IPAddress) by CorrelationId, UserPrincipalName
-// Optional to only filter on events with a RiskLevel during the sign-in
-//| where RiskLevels has_any ("low", "medium", "high")
-```
+
