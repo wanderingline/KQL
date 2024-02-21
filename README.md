@@ -2,8 +2,6 @@
 
 ## Query Information
 
-#### MITRE ATT&CK Technique(s)
-
 #### Description
 List potential adversary in the middle phishing attempts that have been identified by the **OfficeHome** application in combination with an empty deviceid. The OfficeHome application is known to be the default of some AiTM phishing kits. An empty deviceid si the result of an device that is not onboarded/known to your organization. If only onboarded devices should sign in to your orgs cloud apps, an empty id should raise alarms, since it is an unknown device. If the resultype 0 is included in the results a successful sign-in is performed.  
 
@@ -19,6 +17,7 @@ SigninLogs
 //| where RiskLevels has_any ("low", "medium", "high")
 ```
 
+#### MITRE ATT&CK Technique(s)
 | Technique ID | Title    | Link    |
 | ---  | --- | --- |
 | T1557 | Adversary-in-the-Middle | https://attack.mitre.org/techniques/T1557/ |
