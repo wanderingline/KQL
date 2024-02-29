@@ -5,7 +5,7 @@ This detects usage of command line to discover admins either locally or across t
 
 An example of this being exploted was seen in Volt Typhoon attacks where they run net group /dom and net group "Domain Admins" /dom in compromised environments for account discovery.
 
-## Sentinel
+## Sentinel Query
 ```KQL
 DeviceProcessEvents
 | where ProcessCommandLine has_any ("localgroup", "group")

@@ -5,7 +5,7 @@ Query detects creation of shadow copies through command line or PowerShell. This
 
 An example of this exploit was used by Volt Typhoon where they created a shadow copy of the ntds.dit file. The ntds.dit file is the main Active Directory (AD) database file which contains information about users, groups, group memberships, and password hashes for all users in the domain. Although the ntds.dit file is locked while in use by AD, a copy can be made by creating a Volume Shadow Copy and extracting the ntds.dit file from the Shadow Copy.
 
-## Sentinel
+## Sentinel Query
 ```KQL
 DeviceProcessEvents
 | where ProcessCommandLine has_all ("create", "shadow") or ProcessCommandLine has_any ("shadowcopy")
